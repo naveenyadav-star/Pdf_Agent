@@ -46,11 +46,12 @@ pdf_path = get_env_variable("PDF_PATH", default="data/WEF_Future_of_Jobs_Report_
 st.set_page_config(page_title="📄 RAG PDF QA", layout="wide")
 st.title("📄 Ask Questions Related- AI and the Future of Work Jobs Report 2025 -PDF File")
 
-# Initialize qa_chain only once (caching!)
+
 if "qa_chain" not in st.session_state:
     with st.spinner("🔄 Loading Vector DB & Retrieval Chain..."):
-        # st.session_state.qa_chain = retriver_query(pdf_path, query=None)
-        st.session_state['qa_chain'] = retriver_query(pdf_path, query=None)
+        st.session_state["qa_chain"] = retriver_query(pdf_path, query=None)
+qa_chain = st.session_state["qa_chain"]
+
 
 # ask_section = st.empty()
 query = st.text_input("❓ Your question:")

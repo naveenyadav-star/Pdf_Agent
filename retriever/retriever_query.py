@@ -14,7 +14,7 @@ DEEPSEEK_API_KEY = get_env_variable("DEEPSEEK_API_KEY" )  # Optional, if using D
 
 SUMMARY_RAG_PROMPT = PromptTemplate.from_template("""
 Use ONLY the following extracted content to answer the question. 
-If the answer is not found in the content, but instead of don't know, respond briefly and politely with this.
+If the answer is not found in the pdf content , but instead of don't know, respond briefly and politely with this.
 
 Content:
 {context}
@@ -48,10 +48,10 @@ def llm():
 def retriver_query(pdf_path: str, query: str):
 
     documents=read_pdf_file(pdf_path) 
-
+    
     vectorstore = create_embedding_store(documents, force_embed=False)
     # Create a retriever from the vector store
-        
+    
 
     retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 6})
     # Build RAG chain (Prompt + Retriever)
