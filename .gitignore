@@ -25,6 +25,9 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+chroma_langchain_db/*
+.streamlit/
+
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
