@@ -45,22 +45,7 @@ def ask_with_fallback(qa_chain, query,callbacks=None):
 pdf_path = get_env_variable("PDF_PATH", default="data/WEF_Future_of_Jobs_Report_2025.pdf") 
 
 st.set_page_config(page_title="📄 RAG PDF QA", layout="wide")
-st.title("📄 Ask Questions from - AI and the Future of Work Jobs Report 2025 -PDF File")
-st.markdown("""
-Welcome! This app uses **AI + AI and the Future of Work" — World Economic Forum (WEF)** to answer questions only from the document.  
-If something is not in the PDF, it will politely say so. 😉
-
-### 🔍 Example Questions:
-- What are the top 10 emerging skills?
-- How is AI impacting job roles?
-- Which sectors will see the most job growth by 2025?
-- What does the report say about women in tech?
-
----
-
-📌 **Note**: The model does *not* make up answers — it only uses what’s in the document.
-
-""")
+st.title("📄 Ask Questions Related- AI and the Future of Work Jobs Report 2025 -PDF File")
 
 # Initialize qa_chain only once (caching!)
 if "qa_chain" not in st.session_state:
