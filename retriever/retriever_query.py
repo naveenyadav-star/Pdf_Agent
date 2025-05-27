@@ -13,16 +13,15 @@ llm_flag = get_env_variable("LLM_FLAG", default="openai")  # "openai" or "groq"
 DEEPSEEK_API_KEY = get_env_variable("DEEPSEEK_API_KEY" )  # Optional, if using DeepSeek
 
 SUMMARY_RAG_PROMPT = PromptTemplate.from_template("""
-You are a helpful assistant. If the question is not about the uploaded PDF or documentation, but instead friendly talk, respond briefly and politely with minimum.
+Use ONLY the following extracted content to answer the question. 
+If the answer is not found in the content, but instead of don't know, respond briefly and politely with this.
 
----
-Context:
+Content:
 {context}
 
-Question:
-{question}
+Question: {question}
 
-Answer:
+Answer in 50 words or less.
 """)
 
 def llm():
@@ -39,7 +38,7 @@ def llm():
         model_name="deepseek-chat",  # or your actual DeepSeek model
         base_url="https://api.deepseek.com/v1",  # Replace with actual if self-hosted or official
         api_key=DEEPSEEK_API_KEY,
-        temperature=0.7
+        temperature=0
         )
         
 
@@ -54,7 +53,7 @@ def retriver_query(pdf_path: str, query: str):
     # Create a retriever from the vector store
         
 
-    retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 3})
+    retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 6})
     # Build RAG chain (Prompt + Retriever)
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm(),

@@ -11,9 +11,6 @@ OPENAI_API_KEY = get_env_variable("OPENAI_API_KEY")
 CHROMA_DB_DIR = get_env_variable("CHROMA_DB_DIR")
 
 def get_or_create_chroma_db(splits, embeddings, force_rebuild=False):
-
-    
-    
     
     if os.path.exists(CHROMA_DB_DIR) and not force_rebuild:
         print("📂 Chroma DB already exists. Loading from disk...")
@@ -33,7 +30,7 @@ def get_or_create_chroma_db(splits, embeddings, force_rebuild=False):
 
     return vectordb
 
-def create_embedding_store(documents: str, chunk_size: int = 1000, chunk_overlap: int = 200,force_embed=False):
+def create_embedding_store(documents: str, chunk_size: int = 2000, chunk_overlap: int = 500,force_embed=False):
     """
     Create an embedding store from a PDF file.
 
