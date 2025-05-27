@@ -25,7 +25,7 @@ def get_or_create_chroma_db(splits, embeddings, force_rebuild=False):
             persist_directory="./chroma_langchain_db",  
         )
         vectordb = vector_store.add_documents(splits)
-        vectordb.persist()
+        # vectordb.persist()
         print("✅ Chroma DB created and stored successfully.")
 
     return vectordb
