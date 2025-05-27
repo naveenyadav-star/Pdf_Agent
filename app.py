@@ -5,7 +5,6 @@ from openai import AuthenticationError, RateLimitError, OpenAIError,APIStatusErr
 import requests
 from utils.lang_smith_tracer import setup_langsmith_tracer
 
-
 # Load environment variables
 load_environment()
 def ask_with_fallback(qa_chain, query,callbacks=None):
