@@ -48,8 +48,8 @@ def llm():
     
 
 def retriver_query(pdf_path: str, query: str):
-
-    
+    """
+    Create a retrieval-based question-answering chain from a PDF file."""
     
     vectorstore = create_vector_store(pdf_path, force_embed=False)
     # Create a retriever from the vector store
