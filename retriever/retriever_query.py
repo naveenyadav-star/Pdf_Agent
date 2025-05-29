@@ -1,7 +1,5 @@
 from langchain.chains import RetrievalQA
 from langchain_openai.chat_models import ChatOpenAI
-from utils.read_pdf import read_pdf_file
-from embedding_store.embed_store import create_embedding_store  
 from embedding_store.create_vector_store import create_vector_store
 from langchain_groq.chat_models import ChatGroq
 from config.config import load_environment, get_env_variable    
