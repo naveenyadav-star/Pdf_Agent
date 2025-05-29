@@ -1,7 +1,6 @@
 from langchain.chains import RetrievalQA
 from langchain_openai.chat_models import ChatOpenAI
-from utils.read_pdf import read_pdf_file
-from embedding_store.embed_store import create_embedding_store  
+from utils.read_pdf import read_pdf_file 
 from embedding_store.create_vector_store import create_vector_store
 from langchain_groq.chat_models import ChatGroq
 from config.config import load_environment, get_env_variable    
@@ -16,7 +15,8 @@ DEEPSEEK_API_KEY = get_env_variable("DEEPSEEK_API_KEY" )  # Optional, if using D
 
 SUMMARY_RAG_PROMPT = PromptTemplate.from_template("""
 Use ONLY the following extracted content to answer the question. 
-If the answer is not found in the pdf content , but instead of don't know, respond briefly and politely with this.
+If the answer is not found in the pdf content , but instead of don't know, respond briefly and politely with this.'
+For HI, Hello like questions, respond with a friendly greeting.
 
 Content:
 {context}
