@@ -49,7 +49,7 @@ st.title("📄 Ask Questions Related- AI and the Future of Work Jobs Report 2025
 
 if "qa_chain" not in st.session_state:
     with st.spinner("🔄 Loading Vector DB & Retrieval Chain..."):
-        st.session_state["qa_chain"] = retriver_query(pdf_path, query=None)
+        st.session_state["qa_chain"] = retriver_query(query=None)
 qa_chain = st.session_state["qa_chain"]
 
 

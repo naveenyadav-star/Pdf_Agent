@@ -45,11 +45,11 @@ def llm():
     return llm
     
 
-def retriver_query(pdf_path: str, query: str):
+def retriver_query(query: str):
 
     
     
-    vectorstore = create_vector_store(pdf_path, force_embed=False)
+    vectorstore = create_vector_store( force_embed=False)
     # Create a retriever from the vector store
     
     retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 6})
