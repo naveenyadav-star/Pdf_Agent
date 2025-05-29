@@ -10,7 +10,7 @@ load_environment()
 OPENAI_API_KEY = get_env_variable("OPENAI_API_KEY") 
 CHROMA_DB_DIR = get_env_variable("CHROMA_DB_DIR", default="./chroma_langchain_db")  # Default directory if not set
 DELETE_VECTOR_STORE = get_env_variable("DELETE_VECTOR_STORE", default="False").lower() == "true"
-pdf_path = get_env_variable("PDF_PATH", default="data/WEF_Future_of_Jobs_Report_2025.pdf")
+pdf_path = get_env_variable("PDF_PATH", default="data/The_opportunities_and_risks_of_employment.pdf")
 JOBS_PDF_COLLECTION_NAME = get_env_variable("JOBS_PDF_COLLECTION_NAME", default="myAIDoc")
 from utils.read_pdf import read_pdf_file
 
