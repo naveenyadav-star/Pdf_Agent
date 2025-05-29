@@ -2,9 +2,11 @@ from langchain.chains import RetrievalQA
 from langchain_openai.chat_models import ChatOpenAI
 from utils.read_pdf import read_pdf_file
 from embedding_store.embed_store import create_embedding_store  
+from embedding_store.create_vector_store import create_vector_store
 from langchain_groq.chat_models import ChatGroq
 from config.config import load_environment, get_env_variable    
 from langchain.prompts import PromptTemplate
+
 # Load environment variables    
 
 load_environment()
@@ -47,12 +49,11 @@ def llm():
 
 def retriver_query(pdf_path: str, query: str):
 
-    documents=read_pdf_file(pdf_path) 
     
-    vectorstore = create_embedding_store(documents, force_embed=False)
+    
+    vectorstore = create_vector_store(pdf_path, force_embed=False)
     # Create a retriever from the vector store
     
-
     retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 6})
     # Build RAG chain (Prompt + Retriever)
     qa_chain = RetrievalQA.from_chain_type(
