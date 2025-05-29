@@ -41,7 +41,7 @@ def ask_with_fallback(qa_chain, query,callbacks=None):
     
     return None
 
-pdf_path = get_env_variable("PDF_PATH", default="data/WEF_Future_of_Jobs_Report_2025.pdf") 
+pdf_path = get_env_variable("PDF_PATH", default="data/The_opportunities_and_risks_of_employment.pdf") 
 
 st.set_page_config(page_title="📄 RAG PDF QA", layout="wide")
 st.title("📄 Ask Questions Related- AI and the Future of Work Jobs Report 2025 -PDF File")
@@ -49,7 +49,7 @@ st.title("📄 Ask Questions Related- AI and the Future of Work Jobs Report 2025
 
 if "qa_chain" not in st.session_state:
     with st.spinner("🔄 Loading Vector DB & Retrieval Chain..."):
-        st.session_state["qa_chain"] = retriver_query(query=None)
+        st.session_state["qa_chain"] = retriver_query(pdf_path, query=None)
 qa_chain = st.session_state["qa_chain"]
 
 
