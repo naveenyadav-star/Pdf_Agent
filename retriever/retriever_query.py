@@ -54,7 +54,7 @@ def retriver_query(pdf_path: str, query: str):
     vectorstore = create_vector_store(pdf_path, force_embed=False)
     # Create a retriever from the vector store
     
-    retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 6})
+    retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 3})
     # Build RAG chain (Prompt + Retriever)
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm(),
